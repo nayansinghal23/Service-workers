@@ -2,7 +2,9 @@
 
 import prisma from "@/lib/db";
 
-export const fetchJobs = async () => {
+import { Job } from "@/interfaces/interface";
+
+export const fetchJobs = async (): Promise<{ jobs: Job[]; error?: string }> => {
   try {
     const jobs = await prisma.job.findMany({
       orderBy: {

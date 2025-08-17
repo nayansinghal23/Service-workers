@@ -1,18 +1,16 @@
 import JobHeader from "@/components/job-header";
 import JobList from "@/components/job-list";
-
-import { Job } from "@/interfaces/interface";
+import SWRegister from "@/components/sw-register";
 
 import { fetchJobs } from "@/actions/fetchJobs";
 
-const jobs: Job[] = [];
-
 const JobsPage = async () => {
-  const { jobs, error }: any = await fetchJobs();
+  const { jobs, error } = await fetchJobs();
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <JobHeader />
+      <SWRegister />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         {jobs.length === 0 || error ? (
           <div className="text-center py-12">
